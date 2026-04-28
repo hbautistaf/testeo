@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecciones Salariales MX</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">💰</div>
+  <div>
+    <h1>Proyecciones Salariales — México</h1>
+    <p>Calcula SBC, IMSS, ISR y neto de forma rápida</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       FORMULARIO
+       ============================================================ -->
+  <div class="card form-card">
+    <h2 class="section-title">Nueva Proyección</h2>
+
+    <div class="form-grid">
+
+      <!-- Nombre -->
+      <div class="form-group" style="grid-column: 1/-1;">
+        <label for="nombre">Nombre de la proyección</label>
+        <input type="text" id="nombre" placeholder="Ej: Oferta empresa X — Junior Dev">
+      </div>
+
+      <!-- Sueldo Bruto -->
+      <div class="form-group">
+        <label for="sueldoBruto">Sueldo Bruto mensual ($)</label>
+        <input type="number" id="sueldoBruto" placeholder="0.00" min="0" step="0.01">
+        <span class="hint">Monto total ofrecido</span>
+      </div>
+
+      <!-- UMA -->
+      <div class="form-group">
+        <label for="uma">UMA diaria ($)</label>
+        <input type="number" id="uma" value="113.14" min="0" step="0.01">
+        <span class="hint">UMA 2024 = $108.57 · 2025 = $113.14</span>
+      </div>
+
+      <!-- Esquema -->
+      <div class="form-group">
+        <label>Esquema salarial</label>
+        <div class="radio-row">
+          <label>
+            <input type="radio" name="esquema" id="esquemaNominal" value="nominal" checked>
+            100% Nominal
+          </label>
+          <label>
+            <input type="radio" name="esquema" id="esquemaMixto" value="mixto">
+            Mixto
+          </label>
+        </div>
+        <span class="hint">En esquema mixto, parte del sueldo no se reporta al IMSS</span>
+      </div>
+
+      <!-- Sección Mixto (condicional) -->
+      <div class="form-group" id="mixtoSection" style="display:none; grid-column: 1/-1;">
+        <div class="mixto-section">
+          <div class="form-group">
+            <label id="mixSalaryLabel">Monto ante IMSS ($)</label>
+            <input type="number" id="mixSalary" value="0" min="0" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <div class="check-row">
+              <label>
+                <input type="checkbox" id="mixPerc">
+                Ingresar como porcentaje del sueldo bruto
+              </label>
+            </div>
+          </div>
+        </div>
+        <span class="hint">Ejemplo: si el sueldo bruto es $30,000 y $18,000 se declaran ante el IMSS, ingresa $18,000 (o 60%)</span>
+      </div>
+
+      <!-- Días de vacaciones -->
+      <div class="form-group">
+        <label for="diasVacaciones">Días de Vacaciones</label>
+        <input type="number" id="diasVacaciones" value="12" min="0" step="1">
+        <span class="hint">Mínimo legal: 12 días (LFT 2023)</span>
+      </div>
+
+      <!-- Prima vacacional -->
+      <div class="form-group">
+        <label for="primaVacacional">Prima Vacacional (%)</label>
+        <input type="number" id="primaVacacional" value="25" min="0" step="1">
+        <span class="hint">Mínimo legal: 25%</span>
+      </div>
+
+      <!-- Días de aguinaldo -->
+      <div class="form-group">
+        <label for="diasAguinaldo">Días de Aguinaldo</label>
+        <input type="number" id="diasAguinaldo" value="15" min="0" step="1">
+        <span class="hint">Mínimo legal: 15 días</span>
+      </div>
+
+      <!-- Vales de Despensa -->
+      <div class="form-group">
+        <label for="vales">Vales de Despensa (mensuales $)</label>
+        <input type="number" id="vales" value="0" min="0" step="0.01">
+        <span class="hint">Exento hasta 40% del UMA mensual</span>
+      </div>
+
+      <!-- Fondo de Ahorro -->
+      <div class="form-group">
+        <label>Fondo de Ahorro</label>
+        <div class="check-row">
+          <label>
+            <input type="checkbox" id="fondoAhorro">
+            Sí, incluir fondo de ahorro (tope: 1.3× UMA mensual)
+          </label>
+        </div>
+      </div>
+
+      <!-- Otros sin impuestos -->
+      <div class="form-group">
+        <label for="otros">Otros SIN impuestos (mensual $)</label>
+        <input type="number" id="otros" value="0" min="0" step="0.01">
+        <span class="hint">Bonos exentos, compensaciones no gravables</span>
+      </div>
+
+      <!-- Otros con impuestos -->
+      <div class="form-group">
+        <label for="otrosTaxable">Otros CON impuestos (mensual $)</label>
+        <input type="number" id="otrosTaxable" value="0" min="0" step="0.01">
+        <span class="hint">Bono mensual gravable, comisiones, etc.</span>
+      </div>
+
+    </div><!-- /.form-grid -->
+
+    <div class="form-actions">
+      <button class="btn btn-primary" id="btnCalc">⚡ Calcular</button>
+      <button class="btn btn-success" id="btnSave" style="display:none">💾 Guardar Proyección</button>
+      <button class="btn btn-ghost"   id="btnReset">↺ Limpiar</button>
+    </div>
+  </div><!-- /.form-card -->
+
+  <!-- ============================================================
+       PANEL DE RESULTADOS
+       ============================================================ -->
+  <div id="resultsPanel" class="card">
+    <!-- Se genera dinámicamente desde app.js -->
+  </div>
+
+  <!-- ============================================================
+       TABLA DE PROYECCIONES GUARDADAS
+       ============================================================ -->
+  <div class="card" id="projectionsSection">
+    <h2 class="section-title">📋 Proyecciones Guardadas</h2>
+    <div id="projectionsWrap"></div>
+  </div>
+
+  <!-- ============================================================
+       NOTAS
+       ============================================================ -->
+  <div class="card" style="font-size:.85rem; color:#6b7280; border-left:4px solid #e5e7eb;">
+    <strong>Notas:</strong>
+    <ul style="margin-top:.5rem; padding-left:1.2rem; line-height:1.7;">
+      <li>Las tablas de ISR utilizadas son las vigentes en el archivo fuente (SAT MX).</li>
+      <li>El SBC está topado a 25 veces el UMA diario.</li>
+      <li>El IMSS incluye: Especie Excedente, Prestaciones en Dinero, Pensionados y Beneficiarios, Invalidez y Vida, y CEAV.</li>
+      <li>El Fondo de Ahorro se calcula al tope máximo (1.3× UMA × 30.4 días) — tanto empleado como patrón.</li>
+      <li>El ISR mensual se aplica sobre el sueldo nominal + otros gravables. El ISR anual sobre el ingreso anual gravable.</li>
+      <li>El AFORE se estima con rendimiento del 7% anual.</li>
+      <li>Las proyecciones se guardan en el almacenamiento local del navegador.</li>
+    </ul>
+  </div>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

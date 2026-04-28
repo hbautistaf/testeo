@@ -1,0 +1,345 @@
+/* ============================================================
+   Variables y reset
+   ============================================================ */
+:root {
+  --bg:        #f0f2f5;
+  --surface:   #ffffff;
+  --border:    #dde1e7;
+  --primary:   #1a6b3c;
+  --primary-d: #124f2c;
+  --accent:    #22c55e;
+  --deduct:    #dc2626;
+  --total:     #15803d;
+  --text:      #1e2733;
+  --muted:     #6b7280;
+  --shadow:    0 1px 4px rgba(0,0,0,.10);
+  --radius:    10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+
+header .logo { font-size: 2rem; }
+
+header h1 { font-size: 1.4rem; font-weight: 700; }
+header p  { font-size: .85rem; opacity: .8; }
+
+/* ============================================================
+   Layout
+   ============================================================ */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ============================================================
+   Formulario
+   ============================================================ */
+.form-card h2 { margin-bottom: 1.25rem; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+input[type="text"],
+input[type="number"] {
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: .55rem .75rem;
+  font-size: .95rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+  background: #fafafa;
+  width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+/* Radio/Checkbox row */
+.radio-row, .check-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.radio-row label,
+.check-row label {
+  font-size: .9rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 1rem;
+  height: 1rem;
+}
+
+.mixto-section {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.mixto-section .form-group { min-width: 140px; }
+
+.hint {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-top: .2rem;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   Botones
+   ============================================================ */
+.btn {
+  padding: .6rem 1.4rem;
+  border: none;
+  border-radius: 7px;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter .15s, transform .1s;
+}
+
+.btn:active { transform: scale(.97); }
+
+.btn-primary  { background: var(--primary); color: #fff; }
+.btn-primary:hover { filter: brightness(1.12); }
+
+.btn-success  { background: var(--accent); color: #fff; }
+.btn-success:hover { filter: brightness(1.08); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+}
+.btn-ghost:hover { background: var(--bg); }
+
+.btn-sm {
+  padding: .3rem .7rem;
+  font-size: .8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-view   { background: #dbeafe; color: #1d4ed8; }
+.btn-view:hover { background: #bfdbfe; }
+.btn-delete { background: #fee2e2; color: #dc2626; }
+.btn-delete:hover { background: #fecaca; }
+
+/* ============================================================
+   Panel de resultados
+   ============================================================ */
+#resultsPanel { display: none; }
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-info  { border-left: 4px solid var(--primary); }
+.card-extra { border-left: 4px solid #8b5cf6; }
+.card-main  { border-left: 4px solid var(--accent); }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.data-table td {
+  padding: .4rem .5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.data-table td:last-child {
+  text-align: right;
+  font-weight: 500;
+  color: var(--primary-d);
+}
+
+.data-table tr.highlight td { background: #f0fdf4; font-weight: 700; }
+
+/* Tabla comparativa mensual/anual */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.comparison-table th {
+  background: var(--primary);
+  color: #fff;
+  padding: .65rem .75rem;
+  text-align: left;
+}
+
+.comparison-table th:not(:first-child) { text-align: right; }
+
+.comparison-table td {
+  padding: .45rem .75rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.comparison-table td:not(:first-child) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparison-table .section-header td {
+  background: #f0fdf4;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: .5rem .75rem .3rem;
+}
+
+.comparison-table .deduction td { color: var(--deduct); }
+
+.comparison-table .subtotal td {
+  border-top: 2px solid var(--border);
+  background: #fafafa;
+}
+
+.comparison-table .total-row td {
+  background: #f0fdf4;
+  color: var(--total);
+  font-size: 1rem;
+  border-top: 2px solid var(--accent);
+}
+
+/* ============================================================
+   Tabla de proyecciones
+   ============================================================ */
+#projectionsSection h2 { margin-bottom: 1rem; }
+
+.table-scroll { overflow-x: auto; }
+
+.proj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .87rem;
+  min-width: 900px;
+}
+
+.proj-table th {
+  background: #1e3a2f;
+  color: #fff;
+  padding: .6rem .75rem;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.proj-table td {
+  padding: .5rem .75rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.proj-table tr:hover td { background: #f0fdf4; }
+
+.actions-cell { display: flex; gap: .4rem; }
+
+.empty-msg {
+  color: var(--muted);
+  padding: 1.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 600px) {
+  main { padding: 1rem; }
+  header { padding: 1rem; }
+  header h1 { font-size: 1.1rem; }
+}
