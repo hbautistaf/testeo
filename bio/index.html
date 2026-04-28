@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Héctor Bautista — @hbautista</title>
+    <meta name="description" content="I'm a Gnu/Linux user and sometimes a BOFH >;-}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg:         #0d1117;
+            --bg-card:    #161b22;
+            --bg-hover:   #1c2128;
+            --border:     #30363d;
+            --border-h:   #484f58;
+            --text:       #e6edf3;
+            --text-muted: #8b949e;
+            --accent:     #3fb950;
+            --radius:     10px;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 52px 16px 40px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        /* ── Profile ── */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .avatar-wrap {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: block;
+        }
+
+        .avatar-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 22px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2.5px solid var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-badge i {
+            font-size: 9px;
+            color: var(--bg);
+        }
+
+        .name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .handle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 360px;
+        }
+
+        /* ── Terminal prompt ── */
+        .prompt {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 10px 14px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow: hidden;
+        }
+
+        .p-user  { color: var(--accent); }
+        .p-at    { color: var(--text-muted); }
+        .p-path  { color: #58a6ff; }
+        .p-cmd   { color: var(--text); }
+        .p-dim   { color: var(--text-muted); }
+
+        .cursor {
+            display: inline-block;
+            width: 7px;
+            height: 13px;
+            background: var(--accent);
+            animation: blink 1.2s step-end infinite;
+            vertical-align: middle;
+            margin-left: 1px;
+            flex-shrink: 0;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        /* ── Section label ── */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            padding-left: 2px;
+        }
+
+        /* ── Link grid ── */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 11px 13px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text);
+            transition: background 0.15s, border-color 0.15s, transform 0.1s;
+        }
+
+        .link-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--border-h);
+            transform: translateY(-1px);
+        }
+
+        .link-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .link-info { min-width: 0; }
+
+        .link-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .link-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .span2 { grid-column: span 2; }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: #484f58;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 400px) {
+            .links-grid       { grid-template-columns: 1fr; }
+            .span2            { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Profile -->
+    <div class="profile">
+        <div class="avatar-wrap">
+            <img class="avatar"
+                 src="https://ui-avatars.com/api/?name=Hector+Bautista&background=161b22&color=3fb950&size=200&bold=true&font-size=0.38"
+                 alt="Héctor Bautista Flores">
+            <div class="avatar-badge"><i class="fab fa-linux"></i></div>
+        </div>
+        <div class="name">Héctor Bautista Flores</div>
+        <div class="handle">@hbautista</div>
+        <div class="bio">I'm a Gnu/Linux user and sometimes a BOFH >;-}</div>
+    </div>
+
+    <!-- Terminal prompt -->
+    <div class="prompt">
+        <span class="p-user">hbautista</span><span class="p-at">@</span><span class="p-path">~</span>
+        <span class="p-dim">$</span>
+        <span class="p-cmd">cat links.txt</span>
+        <span class="cursor"></span>
+    </div>
+
+    <!-- Dev -->
+    <div class="section-label"># dev</div>
+    <div class="links-grid">
+        <a class="link-card" href="https://github.com/hbautistaf/" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(110,118,129,.15);color:#e6edf3"><i class="fab fa-github"></i></div>
+            <div class="link-info">
+                <div class="link-name">GitHub</div>
+                <div class="link-sub">hbautistaf</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://gitlab.com/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(252,109,38,.15);color:#fc6d26"><i class="fab fa-gitlab"></i></div>
+            <div class="link-info">
+                <div class="link-name">GitLab</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://www.linkedin.com/in/hbautista/" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(10,102,194,.15);color:#0a66c2"><i class="fab fa-linkedin"></i></div>
+            <div class="link-info">
+                <div class="link-name">LinkedIn</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://about.me/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(0,180,219,.15);color:#00b4db"><i class="fas fa-address-card"></i></div>
+            <div class="link-info">
+                <div class="link-name">about.me</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Social -->
+    <div class="section-label"># social</div>
+    <div class="links-grid">
+        <a class="link-card" href="https://bsky.app/profile/hbautista.com" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(0,133,255,.15);color:#0085ff"><i class="fab fa-bluesky"></i></div>
+            <div class="link-info">
+                <div class="link-name">Bluesky</div>
+                <div class="link-sub">hbautista.com</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://www.twitter.com/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(29,161,242,.15);color:#1da1f2"><i class="fab fa-x-twitter"></i></div>
+            <div class="link-info">
+                <div class="link-name">Twitter / X</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/hbautista/" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(228,64,95,.15);color:#e4405f"><i class="fab fa-instagram"></i></div>
+            <div class="link-info">
+                <div class="link-name">Instagram</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://www.last.fm/user/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(213,16,7,.15);color:#d51007"><i class="fab fa-lastfm"></i></div>
+            <div class="link-info">
+                <div class="link-name">Last.fm</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Creative -->
+    <div class="section-label"># creative</div>
+    <div class="links-grid">
+        <a class="link-card" href="http://500px.com/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(0,153,229,.15);color:#0099e5"><i class="fab fa-500px"></i></div>
+            <div class="link-info">
+                <div class="link-name">500px</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="http://www.flickr.com/people/hbautista/" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(255,0,132,.15);color:#ff0084"><i class="fab fa-flickr"></i></div>
+            <div class="link-info">
+                <div class="link-name">Flickr</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="http://vimeo.com/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(26,183,234,.15);color:#1ab7ea"><i class="fab fa-vimeo-v"></i></div>
+            <div class="link-info">
+                <div class="link-name">Vimeo</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://www.behance.net/hbautista/" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(23,105,255,.15);color:#1769ff"><i class="fab fa-behance"></i></div>
+            <div class="link-info">
+                <div class="link-name">Behance</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card" href="https://app.trakt.tv/profile/hbautista" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(237,28,36,.15);color:#ed1c24"><i class="fas fa-film"></i></div>
+            <div class="link-info">
+                <div class="link-name">Trakt</div>
+                <div class="link-sub">hbautista</div>
+            </div>
+        </a>
+        <a class="link-card span2" href="https://hbautista.com" target="_blank" rel="noopener">
+            <div class="link-icon" style="background:rgba(63,185,80,.15);color:#3fb950"><i class="fas fa-globe"></i></div>
+            <div class="link-info">
+                <div class="link-name">hbautista.com</div>
+                <div class="link-sub">website</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="footer">hbautista.com &nbsp;·&nbsp; hbautista@</div>
+
+</div>
+</body>
+</html>
