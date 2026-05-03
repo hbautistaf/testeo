@@ -1,0 +1,82 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-950 text-gray-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm font-serif">iC</span>
+          </div>
+          <span class="font-bold text-lg text-white">iCampuzanos</span>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Asesoría especializada en impuestos, contabilidad, finanzas y recursos humanos
+          para emprendedores y pequeñas empresas en México.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Navegación</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="hover:text-gold-300 transition-colors">Inicio</a></li>
+          <li><a href="/servicios" class="hover:text-gold-300 transition-colors">Servicios</a></li>
+          <li><a href="/sobre-nosotros" class="hover:text-gold-300 transition-colors">Sobre nosotros</a></li>
+          <li><a href="/blog" class="hover:text-gold-300 transition-colors">Blog</a></li>
+          <li><a href="/contacto" class="hover:text-gold-300 transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Contacto</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:info@icampuzanos.com" class="hover:text-white transition-colors">
+              info@icampuzanos.com
+            </a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            </svg>
+            <a href="https://wa.me/524493384115" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+              +52 449 338 4115
+            </a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Aguascalientes, México</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Lunes–Viernes, 9:00–18:00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-brand-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <p>&copy; {year} iCampuzanos. Todos los derechos reservados.</p>
+      <div class="flex gap-4">
+        <a href="/politica-de-privacidad" class="hover:text-white transition-colors">Política de privacidad</a>
+        <a href="/aviso-legal" class="hover:text-white transition-colors">Aviso legal</a>
+        <a href="/cookies" class="hover:text-white transition-colors">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,79 @@
+---
+const services = [
+  {
+    icon: '🔍',
+    title: 'Diagnóstico financiero',
+    description:
+      'Evaluamos la salud financiera de tu negocio: identificamos fortalezas, detectamos oportunidades de mejora y te entregamos un plan de acción claro.',
+    href: '/servicios#diagnostico',
+    features: ['Análisis de flujo de caja', 'Revisión de obligaciones fiscales', 'Informe con recomendaciones'],
+  },
+  {
+    icon: '📊',
+    title: 'Asesoría integral',
+    description:
+      'Gestión completa de impuestos, contabilidad, finanzas y recursos humanos. Nos encargamos de lo complejo para que tú te concentres en crecer.',
+    href: '/servicios#asesoria',
+    features: ['Declaraciones y obligaciones fiscales', 'Contabilidad mensual', 'Nóminas y contratos'],
+  },
+  {
+    icon: '🚀',
+    title: 'Acompañamiento continuo',
+    description:
+      'No desaparecemos después de la primera reunión. Estamos contigo en cada decisión relevante del negocio para garantizar un crecimiento sostenible.',
+    href: '/servicios#acompanamiento',
+    features: ['Reuniones periódicas de seguimiento', 'Consultas ilimitadas por WhatsApp', 'Alertas fiscales preventivas'],
+  },
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="text-gold-600 font-semibold text-sm uppercase tracking-wider">Nuestros servicios</span>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
+        Todo lo que necesitas en un solo lugar
+      </h2>
+      <p class="mt-4 text-gray-500 max-w-2xl mx-auto">
+        Desde el primer diagnóstico hasta el acompañamiento mensual, adaptamos cada servicio
+        a la realidad de tu empresa.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-200 transition-all group">
+          <div class="text-4xl mb-4">{service.icon}</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-700 transition-colors">
+            {service.title}
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">
+            {service.description}
+          </p>
+          <ul class="space-y-2 mb-6">
+            {service.features.map((f) => (
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 text-gold-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={service.href}
+            class="text-gold-600 font-semibold text-sm hover:text-gold-700 flex items-center gap-1 transition-colors"
+          >
+            Saber más
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

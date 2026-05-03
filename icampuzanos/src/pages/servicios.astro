@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+
+const services = [
+  {
+    id: 'diagnostico',
+    icon: '🔍',
+    title: 'Diagnóstico financiero',
+    description: 'Una radiografía completa de la situación financiera y fiscal de tu negocio. Ideal como punto de partida o si sientes que algo no cuadra.',
+    features: [
+      'Análisis de flujo de caja y tesorería',
+      'Revisión de obligaciones fiscales pendientes',
+      'Evaluación de estructura societaria',
+      'Detección de riesgos y oportunidades',
+      'Informe ejecutivo con plan de acción',
+    ],
+  },
+  {
+    id: 'asesoria',
+    icon: '📊',
+    title: 'Asesoría integral',
+    description: 'Gestión completa y mensual de todas las obligaciones fiscales, contables y laborales de tu empresa. Tú te centras en el negocio; nosotros en el resto.',
+    features: [
+      'Declaraciones trimestrales y anuales (IVA, ISR)',
+      'Contabilidad mensual y estados financieros',
+      'Altas, bajas y modificaciones ante el SAT e IMSS',
+      'Gestión de nóminas y contratos laborales',
+      'Planificación fiscal proactiva',
+    ],
+  },
+  {
+    id: 'acompanamiento',
+    icon: '🚀',
+    title: 'Acompañamiento continuo',
+    description: 'Para empresas que quieren crecer con seguridad. Un asesor dedicado que conoce tu negocio en profundidad y está disponible cuando lo necesitas.',
+    features: [
+      'Reuniones de seguimiento mensuales',
+      'Consultas ilimitadas por WhatsApp y email',
+      'Alertas ante cambios normativos que te afecten',
+      'Apoyo en decisiones estratégicas (inversiones, contratos)',
+      'Revisión de presupuestos y proyecciones financieras',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Servicios"
+  description="Diagnóstico financiero, asesoría integral y acompañamiento continuo para emprendedores y pymes en México. Descubre cómo podemos ayudarte."
+>
+  <Header />
+  <main>
+    <!-- Page header -->
+    <section class="bg-gradient-to-br from-brand-950 to-brand-700 text-white py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-gold-300 font-semibold text-sm uppercase tracking-wider">Servicios</span>
+        <h1 class="mt-2 font-serif text-4xl md:text-5xl font-extrabold leading-tight">
+          Soluciones a medida <br class="hidden sm:block"/>
+          <span class="text-gold-300">para tu negocio</span>
+        </h1>
+        <p class="mt-4 text-brand-100 max-w-2xl text-lg">
+          Cada empresa es diferente. Por eso ofrecemos servicios que se adaptan
+          a tu momento, tamaño y necesidades concretas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services detail -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        {services.map((service, i) => (
+          <div
+            id={service.id}
+            class={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+          >
+            <div class={i % 2 !== 0 ? 'md:order-2' : ''}>
+              <div class="text-5xl mb-4">{service.icon}</div>
+              <h2 class="text-3xl font-extrabold text-gray-900 mb-4">{service.title}</h2>
+              <p class="text-gray-500 leading-relaxed mb-6">{service.description}</p>
+              <a
+                href="/contacto"
+                class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+              >
+                Solicitar este servicio
+              </a>
+            </div>
+            <div class={`bg-brand-50 rounded-2xl p-8 ${i % 2 !== 0 ? 'md:order-1' : ''}`}>
+              <h3 class="font-bold text-gray-900 mb-4">¿Qué incluye?</h3>
+              <ul class="space-y-3">
+                {service.features.map((f) => (
+                  <li class="flex items-start gap-3 text-sm text-gray-700">
+                    <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <ContactCTA />
+  </main>
+  <Footer />
+</BaseLayout>
