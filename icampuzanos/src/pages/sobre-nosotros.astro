@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Sobre nosotros"
+  description="Conoce al equipo de iCampuzanos. Asesores especializados en fiscalidad, contabilidad y finanzas para emprendedores y pymes en México."
+>
+  <Header />
+  <main>
+    <!-- Page header -->
+    <section class="bg-gradient-to-br from-brand-950 to-brand-700 text-white py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-gold-300 font-semibold text-sm uppercase tracking-wider">Sobre nosotros</span>
+        <h1 class="mt-2 font-serif text-4xl md:text-5xl font-extrabold">
+          Un equipo que <br class="hidden sm:block"/>
+          <span class="text-gold-300">entiende tu negocio</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Nuestra historia</h2>
+            <div class="space-y-4 text-gray-500 leading-relaxed">
+              <p>
+                iCampuzanos nació de la frustración de ver cómo muchos emprendedores
+                se perdían en el laberinto fiscal y contable, cuando deberían estar
+                enfocados en hacer crecer su negocio.
+              </p>
+              <p>
+                Creamos una asesoría diferente: accesible, directa y enfocada en resultados.
+                Sin tecnicismos innecesarios, sin citas con semanas de antelación y sin
+                sentirte un número más en una cartera de clientes.
+              </p>
+              <p>
+                Hoy acompañamos a más de 100 emprendedores y pequeñas empresas
+                en México, ayudándoles a tomar mejores decisiones financieras
+                y a cumplir con sus obligaciones sin estrés.
+              </p>
+            </div>
+          </div>
+          <div class="bg-brand-50 rounded-2xl p-10 grid grid-cols-2 gap-8 text-center">
+            <div>
+              <p class="text-4xl font-extrabold text-gold-600">+100</p>
+              <p class="text-sm text-gray-500 mt-2">Clientes activos</p>
+            </div>
+            <div>
+              <p class="text-4xl font-extrabold text-gold-600">+10</p>
+              <p class="text-sm text-gray-500 mt-2">Años de experiencia</p>
+            </div>
+            <div>
+              <p class="text-4xl font-extrabold text-gold-600">4</p>
+              <p class="text-sm text-gray-500 mt-2">Áreas de especialización</p>
+            </div>
+            <div>
+              <p class="text-4xl font-extrabold text-gold-600">48h</p>
+              <p class="text-sm text-gray-500 mt-2">Tiempo de respuesta máximo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Lo que nos define</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto mb-12">
+          Más que unos valores corporativos, son compromisos concretos con cada cliente.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: '💬', title: 'Claridad', desc: 'Comunicación sin tecnicismos y siempre al grano.' },
+            { icon: '🤝', title: 'Cercanía', desc: 'Tratamos cada negocio como si fuera el nuestro.' },
+            { icon: '⚡', title: 'Agilidad', desc: 'Respondemos en menos de 48 horas, siempre.' },
+            { icon: '🔒', title: 'Confianza', desc: 'Discreción absoluta con tu información financiera.' },
+          ].map((v) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="text-3xl mb-3">{v.icon}</div>
+              <h3 class="font-bold text-gray-900 mb-2">{v.title}</h3>
+              <p class="text-sm text-gray-500">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA />
+  </main>
+  <Footer />
+</BaseLayout>
