@@ -3,26 +3,11 @@ box-sizing: border-box;
 margin: 0;
 padding: 0;
 }
-a:link {
-  color: green;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:visited {
-  color: pink;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: darkorange;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
+/* Scoped to footer only — link-card overrides these for cards */
+.footer a:link    { color: var(--text-muted); text-decoration: none; }
+.footer a:visited { color: var(--text-muted); text-decoration: none; }
+.footer a:hover   { color: var(--accent);     text-decoration: underline; }
+.footer a:active  { color: var(--accent);     text-decoration: underline; }
 :root {
   --bg:         #0d1117;
   --bg-card:    #161b22;
@@ -36,6 +21,7 @@ a:active {
 }
 body {
 background: var(--bg);
+background-image: radial-gradient(ellipse 1100px 500px at 50% 0%, #1a2332 0%, var(--bg) 70%);
 color: var(--text);
 font-family: 'Inter', -apple-system, sans-serif;
 min-height: 100vh;
@@ -46,7 +32,7 @@ line-height: 1.6;
 }
 .container {
 width: 100%;
-max-width: 560px;
+max-width: 720px;
 }
 /* ── Profile ── */
 .profile {
@@ -99,7 +85,6 @@ margin-bottom: 12px;
 .bio {
 font-size: 0.9rem;
 color: var(--text-muted);
-max-width: 360px;
 }
 /* ── Terminal prompt ── */
 .prompt {
@@ -138,12 +123,12 @@ flex-shrink: 0;
 /* ── Section label ── */
 .section-label {
 font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
+font-size: 0.75rem;
 color: var(--text-muted);
-text-transform: uppercase;
-letter-spacing: 0.1em;
+letter-spacing: 0.04em;
 margin-bottom: 10px;
-padding-left: 2px;
+padding-left: 10px;
+border-left: 2px solid var(--accent);
 }
 /* ── Link grid ── */
 .links-grid {
@@ -198,6 +183,21 @@ justify-content: center;
 flex-shrink: 0;
 font-size: 0.95rem;
 }
+/* Brand colors — single source of truth */
+[data-brand="github"]    { background: rgba(110,118,129,.15); color: #e6edf3; }
+[data-brand="linkedin"]  { background: rgba(10,102,194,.15);  color: #0a66c2; }
+[data-brand="gitlab"]    { background: rgba(252,109,38,.15);  color: #fc6d26; }
+[data-brand="bluesky"]   { background: rgba(0,133,255,.15);   color: #0085ff; }
+[data-brand="twitter"]   { background: rgba(29,161,242,.15);  color: #1da1f2; }
+[data-brand="instagram"] { background: rgba(228,64,95,.15);   color: #e4405f; }
+[data-brand="lastfm"]    { background: rgba(213,16,7,.15);    color: #d51007; }
+[data-brand="500px"]     { background: rgba(0,153,229,.15);   color: #0099e5; }
+[data-brand="flickr"]    { background: rgba(255,0,132,.15);   color: #ff0084; }
+[data-brand="vimeo"]     { background: rgba(26,183,234,.15);  color: #1ab7ea; }
+[data-brand="trakt"]     { background: rgba(237,28,36,.15);   color: #ed1c24; }
+[data-brand="blog"]      { background: rgba(63,185,80,.15);   color: #3fb950; }
+[data-brand="resume"]    { background: rgba(37,99,235,.15);   color: #2563eb; }
+[data-brand="pdf"]       { background: rgba(220,38,38,.15);   color: #dc2626; }
 .link-info { min-width: 0; }
 .link-name {
 font-size: 0.875rem;
